@@ -114,5 +114,74 @@ webpack简单配置
 ### 5. loader
 loader主要在module中的rules里配置
 仅以babel-loader为例
+babel中存在转译es6新的语法的预置配置babel-preset-env、babel-preset-es2015、babel-preset-es2016、babel-preset-es2017、babel-preset-latest等；转译最新的js的api和全局对象的插件如babel-polyfill,bable-plugin-transform-runtime
+#### 5.1 几种常见的预置配置说明
+```
+    babel-preset-env：
+        最常用的babel的预置配置，可以根据浏览器等信息配置语法的转译范围
+        
+    babel-preset-es2015：
+        将es2015版本的js代码转译为es5代码，对于es2016版本的代码或者es2017版本的代码不转译
+        
+    stage-3: 候选(cancidate, complete spec and initial browser implementations)
+        包含插件：
+            transform-async-to-generator 支持async/await
+            transform-exponentiation-operator 支持幂运算符语法糖
+            
+    stage-2：初稿(draft, initial sepc)
+        stage-2除了包含stage-3，还包含了下面2个插件：
+            syntax-trailing-function-commas 支持尾逗号函数
+            transform-object-reset-spread 支持对象的解构赋值
+            
+    stage-1：提案(proposal, this is worth working on)
+        stage-1除了包含stage-2,还包含了以下插件：
+            transform-class-constructor-call 支持class的构造函数
+            transform-class-properties 支持class的static属性
+            transform-decorators 支持es7的装饰者模式即@符号引入的方法(还在讨论中的特性？)
+            transform-export-extensions 支持export方法
+            
+    stage-0: 草案(strawman, just an idea)
+        包括stage1所有插件,还包括以下插件：
+            transform-do-expressions 支持在jsx中书写if/else
+            transform-function-bind 支持::操作符来切换上下文，类似于es5的bind
+```
+[stage部分相关参考](https://www.aliyun.com/jiaocheng/989794.html)    
+```
+    // 常见的babel-loader的配置
+    // 1. webpack.config.js文件中配置相关rules
+    module.export = {
+        ...
+        module: {
+            rules: [
+                {
+                    test: /\.m?js$/,
+                    loader: 'babel-loader'
+                }
+            ]
+        }
+    }
+    // 2. .babelrc文件中
+    {
+        // presets为数组时，遵循倒序，即先用stage-2中转译，然后再用env中的配置进行转译
+        "presets": [
+            //数组第一项表示预置的那个内容，这里选择env
+            // 第二项表示对于env预置内容的相关配置
+            [
+                "env",
+                {
+                    "modules": false
+                }
+            ],
+            "stage-2"
+        ],
+        "plugins": [
+            "transform-runtime"
+        ]
+    }
+```
+#### 5.2 关于presets中的相关配置
+>这里相关配置的具体含义并没有用代码做过测试，暂时参照官网内容
+
+[presets中相关配置官网参考](https://www.babeljs.cn/docs/plugins/preset-env#targets)
 
 
