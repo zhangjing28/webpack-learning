@@ -59,6 +59,7 @@ presets:[
     * 'entry': 根据运行环境引入插件，只用在import'@babel/polyfill'或者require（'@babel/polyfill'）时使用
     
 ![](https://user-gold-cdn.xitu.io/2018/11/14/1670fa0d787d9a9c?w=1986&h=316&f=png&s=92557, "为entry的打包结果")
+
 * **loose**: boolean,默认为false，允许为这个preset下的任何插件启用loose转换
 * **debug**: boolean,默认为false，将使用的目标浏览器/插件等指定的版本用console.log输出
 ```
