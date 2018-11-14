@@ -48,12 +48,15 @@ presets:[
     将其设置为false就不会转换模块，由于现在webpack已经可以转化es6，就不需要babel进行转换了，所以设置为false即可
 * **useBuiltIns**: 
     * 'usage': 监测代码中的es6的使用情况，仅仅加载代码中用到的polyfills
-![](https://user-gold-cdn.xitu.io/2018/11/12/16706ea9933636a2?w=586&h=409&f=png&s=54624, "举例")
-![](https://user-gold-cdn.xitu.io/2018/11/12/167072c0129a7948?w=1059&h=350&f=jpeg&s=114007, "打包结果")
+    
+![](https://user-gold-cdn.xitu.io/2018/11/14/1670fa3c77d84419?w=1340&h=426&f=png&s=86451, "举例")
+![](https://user-gold-cdn.xitu.io/2018/11/14/1670fa1fef7dc586?w=1688&h=614&f=png&s=148254, "打包结果")
     * false： 默认值，不进行任何polyfill
+    
+![](https://user-gold-cdn.xitu.io/2018/11/14/1670f9e28a9c774d?w=1464&h=252&f=png&s=69256, "为false时，打包结果")
     * 'entry': 根据运行环境引入插件，只用在import'@babel/polyfill'或者require（'@babel/polyfill'）时使用
     
-![](https://user-gold-cdn.xitu.io/2018/11/12/167071d029dc5e9a?w=1074&h=892&f=png&s=285786)
+![](https://user-gold-cdn.xitu.io/2018/11/14/1670fa0d787d9a9c?w=1986&h=316&f=png&s=92557, "为entry的打包结果")
 * **loose**: boolean,默认为false，允许为这个preset下的任何插件启用loose转换
 * **debug**: boolean,默认为false，将使用的目标浏览器/插件等指定的版本用console.log输出
 ```
@@ -160,7 +163,9 @@ npm intall --sace babel-runtime
 >使用新的内置函数，例如 Map，Set，Promise 等。使用这些函数的唯一方式通常是引入一个污染全局的 polyfill。
 >注意： 例如 "foobar".includes("foo") 等实例方法将不会正常工作
 
-* **polyfill**: boolean removed in v7  是否切换新的内置插件（Promise，Set，Map等）为使用非全局污染的 polyfill。
+* **polyfill**: boolean removed in v7 
+
+    是否切换新的内置插件（Promise，Set，Map等）为使用非全局污染的 polyfill。
     
 * **helpers**: boolean 默认为`true`
 
