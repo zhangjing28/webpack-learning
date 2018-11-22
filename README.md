@@ -3,3 +3,5 @@
 
 [webpack(2)](https://github.com/zhangjing28/webpack-learning/blob/master/webpack(2).md)
 
+[webpack(3)](https://github.com/zhangjing28/webpack-learning/blob/master/webpack(3).md)
+
