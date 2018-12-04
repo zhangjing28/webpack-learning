@@ -86,7 +86,7 @@ module.exports = {
    ] 
 }
 ```
-![例1的结果](https://user-gold-cdn.xitu.io/2018/12/3/16773bc85950d0cc?w=752&h=430&f=png&s=132469, "例1的结果")
+![例1的结果](https://user-gold-cdn.xitu.io/2018/12/3/16773bc85950d0cc?w=752&h=430&f=png&s=132469 "例1的结果")
 ### 2.2 编写plugin的基本步骤
  #### 2.2.1 定义`apply`方法
  webpack进行打包时的入口是`webpack.js`
@@ -387,7 +387,7 @@ const {
 
 Tapable主要分为两种同步钩子和异步钩子
 
-![](https://user-gold-cdn.xitu.io/2018/12/3/16774ae052299224?w=1406&h=662&f=png&s=157810, "Tapable的分类")
+![](https://user-gold-cdn.xitu.io/2018/12/3/16774ae052299224?w=1406&h=662&f=png&s=157810 "Tapable的分类")
 关于不同的钩子需要知道其订阅方式不同，对于`sync`方法只能通过`tap`订阅，对应的触发方式为`call`,而对于`async`方法可以通过`tap`, `tapPromise`和`tapAsync`三种方式订阅，其对应的触发方式为`call`, `callPromise`和`callAsync`三种
 
 [相关参考](https://juejin.im/post/5abf33f16fb9a028e46ec352)
