@@ -111,7 +111,7 @@ module.exports = {
 这里说的webpack自身的事件钩子指的就是`compiler`对象上的事件钩子,即在源码`Compiler.js`文件中的`hooks`字段对应的属性即`compiler`对象上所有的钩子
 >`Compiler`是webpack引擎的支柱，它通过`CLI`或者`NODE API`传递所有选项，创建一个`Compilation`实例。它扩展自`Tapable`，提供了很多钩子函数
 
-关于以下代码中钩子函数执行的阶段参见[官网](https://webpack.docschina.org/api/compiler-hooks/)
+关于以下代码中钩子函数执行的阶段参见[官网说明](https://webpack.docschina.org/api/compiler-hooks/)
 ```
 // Compiler.js
 class Compiler extends Tapable {
@@ -183,7 +183,7 @@ class Compiler extends Tapable {
 >这里主要是使用`compilation`上的钩子来操作构建结果，达到插件的作用
 `Compilation`模块被`Compiler`用来创建新的编译或者构建，`Compilation`实例能够访问所有的模块和他们的依赖(大部分都是循环依赖)，它会对应用程序依赖图中的所有模块进行字面上的编译，在编译过程中，模块会被加载(loaded),封存(sealed),优化(optimized),分块(chunked),哈希(hashed)和重新构建(restored)
 
-关于以下代码中钩子函数执行的阶段参见[官网](https://webpack.docschina.org/api/compilation-hooks/)
+关于以下代码中钩子函数执行的阶段参见[官网说明](https://webpack.docschina.org/api/compilation-hooks/)
 ```
 //Compilation.js
 class Compilation extends Tapable {
@@ -387,7 +387,7 @@ const {
 
 Tapable主要分为两种同步钩子和异步钩子
 
-![Tapable的分类](https://user-gold-cdn.xitu.io/2018/12/3/16774ae052299224?w=1406&h=662&f=png&s=157810, "Tapable的分类")
+![](https://user-gold-cdn.xitu.io/2018/12/3/16774ae052299224?w=1406&h=662&f=png&s=157810, "Tapable的分类")
 关于不同的钩子需要知道其订阅方式不同，对于`sync`方法只能通过`tap`订阅，对应的触发方式为`call`,而对于`async`方法可以通过`tap`, `tapPromise`和`tapAsync`三种方式订阅，其对应的触发方式为`call`, `callPromise`和`callAsync`三种
 
 [相关参考](https://juejin.im/post/5abf33f16fb9a028e46ec352)
