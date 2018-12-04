@@ -86,7 +86,7 @@ module.exports = {
    ] 
 }
 ```
-![例1的结果](https://user-gold-cdn.xitu.io/2018/12/3/16773bc85950d0cc?w=752&h=430&f=png&s=132469 "例1的结果")
+![例1的结果](https://user-gold-cdn.xitu.io/2018/12/3/16773bc85950d0cc?w=752&h=430&f=png&s=132469, "例1的结果")
 ### 2.2 编写plugin的基本步骤
  #### 2.2.1 定义`apply`方法
  webpack进行打包时的入口是`webpack.js`
@@ -387,12 +387,13 @@ const {
 
 Tapable主要分为两种同步钩子和异步钩子
 
-![](https://user-gold-cdn.xitu.io/2018/12/3/16774ae052299224?w=1406&h=662&f=png&s=157810 "Tapable的分类")
+![Tapable的分类](https://user-gold-cdn.xitu.io/2018/12/3/16774ae052299224?w=1406&h=662&f=png&s=157810 "Tapable的分类")
 关于不同的钩子需要知道其订阅方式不同，对于`sync`方法只能通过`tap`订阅，对应的触发方式为`call`,而对于`async`方法可以通过`tap`, `tapPromise`和`tapAsync`三种方式订阅，其对应的触发方式为`call`, `callPromise`和`callAsync`三种
 
 [相关参考](https://juejin.im/post/5abf33f16fb9a028e46ec352)
 
-### 2.1.2 例2
+### 2.4 又一个例子
+下文中的代码主要用于在构建进入`emit`阶段时，利用`Compilation`的实例新增一个输出文件`fileList.md`文件，并在该文件中输出了webpack打包最终生成的chunk的名称
 ```
 class FileListPlugin{
     constructor(options){
@@ -418,14 +419,21 @@ class FileListPlugin{
 // 修改webpack.config.js文件
 const FileListPlugin = require('./src/FileListPlugin')
 module.exports = {
-    //...
+    entry: {
+        app: './src/index.js',
+        print: './src/print.js'
+    },
     output: {
         filename:'[name].bundle.[hash:5].js'
         path: './src/dist'   
     }
     plugins: [
+        new HtmlWebpackPlugin({
+            title: 'test html title111'
+        }),
         new FileListPlugin()
-    ]
+    ],
+    //...
 }
 
 // 结果--在dist目录下生成了fileList.md文件
@@ -438,4 +446,6 @@ In this build:
 - index.html
 
 ```
-
+### 2.5 下次分享内容
+#### 2.5.1 开发环境配置---webpack-dev-server
+#### 2.5.2 关于webpack流程分析，找到各个钩子函数触发的位置
